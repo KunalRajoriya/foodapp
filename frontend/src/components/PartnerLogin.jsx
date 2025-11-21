@@ -1,11 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../theme.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const PartnerLogin = () => {
+
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your submit logic here
+    
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    axios.post("http://localhost:3000/api/auth/foodpartner/login", {
+        email,
+        password
+  },{
+    withCredentials: true
+  }).then((response) => { 
+      console.log(response.data);
+      navigate("/create-food");
+  })
+  .catch(error =>{
+      console.log("there was an error logging in", error);
+  });
+
   };
 
   return (

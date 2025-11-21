@@ -1,11 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../theme.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const PartnerRegister = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your submit logic here
+    
+    const name = e.target.name.value;
+    const ownerName = e.target.ownerName.value;
+    const email = e.target.email.value;
+    const phone = e.target.phone.value;
+    const address = e.target.address.value;
+    const password = e.target.password.value;
+
+    axios.post("http://localhost:3000/api/auth/foodpartner/register", {
+        name,
+        ownerName,
+        email,
+        phone,
+        address,
+        password
+    },{
+        withCredentials: true
+    }).then((response) => {
+        console.log(response.data);
+        navigate("/create-food");
+    })
+    .catch(error =>{
+        console.log("there was an error registering", error);
+    });
+    
   };
 
   return (
@@ -18,20 +44,20 @@ const PartnerRegister = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="restaurant-name">Restaurant/Business Name</label>
+            <label htmlFor="name">Restaurant/Business Name</label>
             <input
               type="text"
-              id="restaurant-name"
+              id="name"
               placeholder="Enter business name"
               required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="owner-name">Owner Name</label>
+            <label htmlFor="ownerName">Owner Name</label>
             <input
               type="text"
-              id="owner-name"
+              id="ownerName"
               placeholder="Enter owner name"
               required
             />
@@ -77,15 +103,6 @@ const PartnerRegister = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="confirm-password">Confirm Password</label>
-            <input
-              type="password"
-              id="confirm-password"
-              placeholder="Confirm your password"
-              required
-            />
-          </div>
 
           <div className="checkbox-group">
             <input type="checkbox" id="terms" required />

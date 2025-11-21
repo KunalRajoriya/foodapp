@@ -1,11 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../theme.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const UserRegister = () => {
-  const handleSubmit = (e) => {
+
+    const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your submit logic here
+    
+    const fullname = e.target.fullname.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const response= await axios.post("http://localhost:3000/api/auth/user/register", {
+        fullname,   
+        email,
+        password
+    },{
+        withCredentials: true
+    })
+    
+    console.log(response.data);
+
+    navigate("/")
+
   };
 
   return (
@@ -48,15 +69,6 @@ const UserRegister = () => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="confirm-password">Confirm Password</label>
-            <input
-              type="password"
-              id="confirm-password"
-              placeholder="Confirm your password"
-              required
-            />
-          </div>
 
           <div className="checkbox-group">
             <input type="checkbox" id="terms" required />
