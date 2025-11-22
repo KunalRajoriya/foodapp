@@ -7,7 +7,8 @@ import { useNavigate } from 'react-router-dom';
 const UserLogin = () => {
 
     const navigate = useNavigate();
-  const handleSubmit = async (e) => {
+    
+const handleSubmit = async (e) => {
     e.preventDefault();
     
     const email = e.target.email.value;

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const PartnerRegister = () => {
+    const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     
