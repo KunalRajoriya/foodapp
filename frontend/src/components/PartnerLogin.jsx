@@ -80,7 +80,7 @@ const PartnerLogin = () => {
         </div>
 
         <div className="auth-footer" style={{ marginTop: '16px' }}>
-          Looking to order food? <Link to="/user/login">User Login</Link>
+          Looking to order food? <Link to="/">User Login</Link>
         </div>
       </div>
     </div>

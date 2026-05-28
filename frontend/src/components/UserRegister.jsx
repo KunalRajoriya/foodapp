@@ -83,7 +83,7 @@ const UserRegister = () => {
         </form>
 
         <div className="auth-footer">
-          Already have an account? <Link to="/user/login">Sign in</Link>
+          Already have an account? <Link to="/">Sign in</Link>
         </div>
 
         <div className="divider">or</div>

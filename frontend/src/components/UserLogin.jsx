@@ -22,7 +22,7 @@ const handleSubmit = async (e) => {
   });
     console.log(response.data);
 
-    navigate("/")
+    navigate("/user/home")
 };
 
   return (
@@ -30,7 +30,7 @@ const handleSubmit = async (e) => {
       <div className="auth-card">
         <div className="auth-header">
           <h1>Welcome Back</h1>
-          <p>Sign in to continue</p>
+          <p>Sign in to continue</p>~
         </div>
 
         <form onSubmit={handleSubmit}>
