@@ -85,11 +85,16 @@ const Home = () => {
     setTimeout(() => {
       setShowPlayButton(prev => ({ ...prev, [index]: false }));
     }, 500);
+      
   };
+
+
 
   return (
     <div className="home-container" ref={containerRef}>
       {videos.map((video, index) => (
+        
+        
         <div key={video._id} className="video-section">
           <video
             ref={el => videoRefs.current[index] = el}
@@ -124,7 +129,10 @@ const Home = () => {
           <div className="video-overlay">
             <div className="video-info">
               <p className="video-description">{video.description}</p>
-              <Link className="visit-store-btn" to={"/food-partner/Profile" + video.foodPartner} >Visit Store Page </Link>
+              <Link className="visit-store-btn" to={`/food-partner/${video.foodpartner}`} >
+                Visit Store Page
+              </Link>
+              
             </div>
           </div>
         </div>

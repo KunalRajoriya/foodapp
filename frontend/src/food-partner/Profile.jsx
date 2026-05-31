@@ -7,18 +7,18 @@ import { useState, useEffect } from 'react';
 
 const profile = () => {
   const{ id } = useParams();
-  const[ profile, setProfile] = useState(null);
 
-  useEffect(() => {
+  const[ profile, setProfile] = useState(null);
+  const[ videos, setVideos] = useState([]);
+
+ useEffect(() => {
     axios.get(`http://localhost:3000/api/food-partner/${id}`, {
       withCredentials: true
-    }).then((response) => { 
+    }).then((response) => {
       setProfile(response.data.foodPartner);
-    })
+      setVideos(response.data.foodItems);
+    });
   }, [id]);
-
-  
-    
 
   return (
     <div className="profile-page">
@@ -47,9 +47,11 @@ const profile = () => {
       </div>
 
       <div className="video-grid">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
-          <div key={index} className="video-card">
-            <div className="video-label">video</div>
+        {videos.map((v) => (
+          <div key={v._id} className="video-card">
+            <div className="video-label">
+              <video src={v.video} muted ></video>
+            </div>
           </div>
         ))}
       </div>

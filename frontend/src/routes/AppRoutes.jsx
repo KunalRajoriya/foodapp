@@ -8,7 +8,9 @@ import Home from '../general/Home';
 import CreateFood from '../food-partner/CreateFood';
 import Profile from '../food-partner/Profile';
 
+
 const AppRoutes = () => {
+
   return (
     <Router>
       <Routes>
@@ -18,7 +20,7 @@ const AppRoutes = () => {
         <Route path="/food-partner/login" element={<PartnerLogin />} />
         <Route path = "/" element = {<UserLogin />} />
         <Route path = "/create-food" element = {<CreateFood />} />
-        <Route path="/food-Partner/:id" element={<Profile />} />
+        <Route path="/food-partner/:id" element={<Profile />} />
       </Routes>
     </Router>
   );
