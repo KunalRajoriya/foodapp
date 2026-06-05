@@ -20,7 +20,7 @@ const PartnerLogin = () => {
   },{
     withCredentials: true
   }).then((response) => { 
-      console.log(response.data);
+      
       navigate("/create-food");
   })
   .catch(error =>{
